@@ -1,0 +1,37 @@
+// Пример работы класса fstream
+ 
+#include <iostream>
+#include <fstream>
+#include <cstring>
+#include <cstdio>
+#include <string>
+using namespace std;
+ 
+int main()
+{
+    cout << "Введите название файла: ";
+    char file[80];
+    char text[80];
+    string out_s;
+    gets(file);
+    
+    // Введём 3 строки
+    ofstream o(file);
+    cout << "Введите 3 строки в файл " << file << "\n" << endl;
+    for(int i = 0; i < 3; ++i) {
+    gets(text);
+    o << text << endl;
+    }
+    
+    // Прочитаем содержимое
+    ifstream i(file);
+    cout << "\nПрочитаем содержимое файла " << file << endl;
+    while(true) {
+    getline(i, out_s);
+    if(!i.eof())
+        cout << out_s << endl;
+    else break;
+    }
+    
+    return 0;
+}
